@@ -49,7 +49,7 @@
    "ngrok-skip-browser-warning" (FastAPI: CORSMiddleware with allow_headers=["*"]).
    ========================================================================== */
 
-const BACKEND_URL = "YOUR_NGROK_URL_HERE";
+const BACKEND_URL = "https://95695c80d714d5.lhr.life";
 
 // Sample footage used for the clips while in demo mode.
 const DEMO_VIDEO_URL =
