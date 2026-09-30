@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#131722">
+  <title>Reelsmith Pro: podcast to shorts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-view="import">
+
+  <!-- Icon sprite (kept visible-but-zero-size so gradients keep working) -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffc247"/>
+        <stop offset="1" stop-color="#ff5c78"/>
+      </linearGradient>
+    </defs>
+    <symbol id="i-film" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18M3 7.5h4M3 12h18M3 16.5h4M17 3v18M17 7.5h4M17 16.5h4"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="7 4 20 12 7 20 7 4" fill="currentColor"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor"/><rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+    <symbol id="i-rew" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-fwd" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="m22 9-6 6M16 9l6 6"/></symbol>
+    <symbol id="i-dub" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></symbol>
+    <symbol id="i-captions" viewBox="0 0 24 24"><rect width="18" height="14" x="3" y="5" rx="2"/><path d="M7 15h4M15 15h2M7 11h2M13 11h4"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 10v3M6 6v11M10 3v18M14 8v7M18 5v13M22 10v3"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <a class="brand" href="#" id="brandHome" aria-label="Reelsmith Pro home">
+      <span class="brand-mark"><svg class="ico"><use href="#i-film"/></svg></span>
+      <span>Reelsmith</span>
+    </a>
+
+    <ol class="steps" id="steps" aria-label="Progress">
+      <li><button class="step" type="button" data-step="import"><b>1</b><span>Import</span></button></li>
+      <li><button class="step" type="button" data-step="clips" disabled><b>2</b><span>Clips</span></button></li>
+      <li><button class="step" type="button" data-step="edit" disabled><b>3</b><span>Edit</span></button></li>
+      <li><button class="step" type="button" data-step="export" disabled><b>4</b><span>Export</span></button></li>
+    </ol>
+
+    <button class="pill" type="button" id="backendPill" data-state="wait">
+      <span class="dot"></span><span id="backendLabel">Checking backend…</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ===================== SECTION 1: ENTRY & CONFIG ===================== -->
+    <section class="view import" id="viewImport" aria-labelledby="importTitle">
+      <div class="import-head">
+        <h1 id="importTitle">Turn one podcast into a week of shorts</h1>
+        <p>Paste a YouTube link or upload an episode. Reelsmith finds the moments most likely to take off and cuts them to size.</p>
+      </div>
+
+      <div class="card import-card">
+        <div id="sourceInput">
+          <div class="tabs" role="tablist" aria-label="Video source">
+            <button class="tab" type="button" role="tab" id="tabLink" aria-selected="true" aria-controls="panelLink">
+              <svg class="ico"><use href="#i-link"/></svg> Paste YouTube Link
+            </button>
+            <button class="tab" type="button" role="tab" id="tabUpload" aria-selected="false" aria-controls="panelUpload">
+              <svg class="ico"><use href="#i-upload"/></svg> Upload Local Video
+            </button>
+          </div>
+
+          <div id="panelLink" role="tabpanel" aria-labelledby="tabLink">
+            <label class="sr-only" for="ytInput">YouTube link</label>
+            <div class="field-row">
+              <input id="ytInput" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=…" autocomplete="off" spellcheck="false">
+              <button class="btn btn-secondary" type="button" id="ytFetch">Load video</button>
+            </div>
+            <p class="field-error" id="ytError" role="alert" hidden></p>
+          </div>
+
+          <div id="panelUpload" role="tabpanel" aria-labelledby="tabUpload" hidden>
+            <button class="dropzone" type="button" id="dropzone">
+              <svg class="ico ico-lg"><use href="#i-upload"/></svg>
+              <strong>Drop a video here, or browse</strong>
+              <span>MP4, MOV or WebM</span>
+            </button>
+            <input id="fileInput" class="sr-only" type="file" accept="video/*" tabindex="-1">
+          </div>
+        </div>
+
+        <div class="preview" id="preview" hidden>
+          <div class="preview-thumb"><img id="previewImg" alt="Video thumbnail"></div>
+          <div class="preview-body">
+            <span class="badge" id="previewType"></span>
+            <h2 id="previewTitle"></h2>
+            <p id="previewMeta"></p>
+            <button class="btn btn-ghost btn-sm" type="button" id="previewChange">Choose a different video</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card config-card">
+        <h2>Clip settings</h2>
+        <div class="config-grid">
+          <fieldset class="group">
+            <legend>Aspect ratio</legend>
+            <div class="seg">
+              <label><input type="radio" name="ar" value="9:16" checked><span><i class="ar-shape" style="--w:9;--h:16"></i><b>9:16</b><small>Shorts</small></span></label>
+              <label><input type="radio" name="ar" value="1:1"><span><i class="ar-shape" style="--w:13;--h:13"></i><b>1:1</b><small>Square</small></span></label>
+              <label><input type="radio" name="ar" value="16:9"><span><i class="ar-shape" style="--w:16;--h:9"></i><b>16:9</b><small>Normal</small></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend>Duration per clip</legend>
+            <div class="seg">
+              <label><input type="radio" name="dur" value="15"><span><b>15s</b><small>Quick hit</small></span></label>
+              <label><input type="radio" name="dur" value="30" checked><span><b>30s</b><small>Standard</small></span></label>
+              <label><input type="radio" name="dur" value="60"><span><b>60s</b><small>Story</small></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend>Number of reels</legend>
+            <div class="seg seg-4">
+              <label><input type="radio" name="count" value="1"><span><b>1</b></span></label>
+              <label><input type="radio" name="count" value="3" checked><span><b>3</b></span></label>
+              <label><input type="radio" name="count" value="5"><span><b>5</b></span></label>
+              <label><input type="radio" name="count" value="auto"><span><b>Auto</b></span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="btn btn-primary btn-xl" type="button" id="generateBtn" disabled>
+          <svg class="ico"><use href="#i-sparkles"/></svg> Generate Clips
+        </button>
+        <p class="hint" id="genHint">Load a video to get started.</p>
+        <p class="hint hint-demo" id="demoNote" hidden>Backend not connected. Clips are cut from sample footage until you set <code>BACKEND_URL</code> in api.js.</p>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 2: CLIP GALLERY ===================== -->
+    <section class="view gallery" id="viewGallery" aria-labelledby="galleryTitle" hidden>
+      <div class="view-head">
+        <div>
+          <h2 id="galleryTitle">Your clips</h2>
+          <p class="muted" id="galleryMeta"></p>
+        </div>
+        <button class="btn btn-secondary" type="button" id="newVideoBtn">Start with a new video</button>
+      </div>
+      <div class="clip-grid" id="clipGrid"></div>
+    </section>
+
+    <!-- ===================== SECTION 3 + 4: PRO EDITOR & EXPORT ===================== -->
+    <section class="view editor" id="viewEditor" aria-label="Pro editor" hidden>
+      <div class="editor-bar">
+        <button class="btn btn-ghost btn-sm" type="button" id="editorBack"><svg class="ico"><use href="#i-back"/></svg> Clips</button>
+        <div class="editor-title">
+          <h2 id="editorTitle"></h2>
+          <span class="viral-pill" id="editorViral"></span>
+        </div>
+        <button class="btn btn-ghost btn-sm" type="button" id="resetEdits"><svg class="ico"><use href="#i-reset"/></svg> Reset edits</button>
+      </div>
+
+      <div class="editor-body">
+        <div class="stage">
+          <div class="player-area">
+            <div class="frame" id="frame">
+              <video id="editorVideo" playsinline preload="metadata"></video>
+              <div class="broll-card" id="brollCard" hidden><span id="brollLabel"></span></div>
+              <div class="caption-layer" id="captionLayer" aria-live="off"></div>
+              <div class="fx-layer" id="fxLayer"></div>
+              <button class="big-play" type="button" id="bigPlay" aria-label="Play"><svg class="ico"><use href="#i-play"/></svg></button>
+              <div class="proc-overlay" id="playerOverlay" hidden></div>
+            </div>
+          </div>
+
+          <div class="transport">
+            <button class="btn btn-secondary btn-icon" type="button" id="playBtn" aria-label="Play or pause"><svg class="ico"><use href="#i-play"/></svg></button>
+            <button class="btn btn-ghost btn-icon" type="button" id="backBtn" aria-label="Back 5 seconds"><svg class="ico"><use href="#i-rew"/></svg></button>
+            <button class="btn btn-ghost btn-icon" type="button" id="fwdBtn" aria-label="Forward 5 seconds"><svg class="ico"><use href="#i-fwd"/></svg></button>
+            <button class="btn btn-ghost btn-icon" type="button" id="muteBtn" aria-label="Mute or unmute"><svg class="ico"><use href="#i-volume"/></svg></button>
+            <span class="time" id="timeLabel">0:00 / 0:00</span>
+            <div class="fx-chips" id="fxChips" aria-label="Applied edits"></div>
+          </div>
+
+          <div class="timeline" aria-label="Timeline">
+            <div class="tl-head">
+              <span>Timeline</span>
+              <label class="zoom">Zoom
+                <input type="range" id="tlZoom" min="1" max="4" step="0.25" value="1">
+              </label>
+            </div>
+            <div class="tl-scroll" id="tlScroll">
+              <div class="tl-inner" id="tlInner"></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="sidebar" aria-label="Pro tools">
+          <div class="sidebar-head"><h3>Pro tools</h3></div>
+
+          <div class="tools" id="tools">
+            <!-- Voice dubbing -->
+            <section class="tool" data-tool="dubbing">
+              <header class="tool-head">
+                <span class="tool-ico"><svg class="ico"><use href="#i-dub"/></svg></span>
+                <div><h3>Voice Dubbing</h3><p>Translate the speech and re-voice it in the speaker's own tone.</p></div>
+              </header>
+              <div class="lang-row">
+                <label>From <select id="dubFrom" class="select"></select></label>
+                <button class="btn btn-ghost btn-icon" type="button" id="dubSwap" aria-label="Swap languages"><svg class="ico"><use href="#i-swap"/></svg></button>
+                <label>To <select id="dubTo" class="select"></select></label>
+              </div>
+              <button class="btn btn-tool" type="button" id="dubApply">Dub voice</button>
+              <div class="applied" id="dubApplied" hidden><span></span><button class="link" type="button" data-remove="dubbing">Remove</button></div>
+            </section>
+
+            <!-- Voice changer -->
+            <section class="tool" data-tool="voice">
+              <header class="tool-head">
+                <span class="tool-ico"><svg class="ico"><use href="#i-mic"/></svg></span>
+                <div><h3>Voice Changer</h3><p>Reshape pitch and texture for comedy or anonymity.</p></div>
+              </header>
+              <div class="chips" id="voiceChips" role="radiogroup" aria-label="Voice style"></div>
+              <button class="btn btn-tool" type="button" id="voiceApply">Change voice</button>
+              <div class="applied" id="voiceApplied" hidden><span></span><button class="link" type="button" data-remove="voice">Remove</button></div>
+            </section>
+
+            <!-- Captions -->
+            <section class="tool" data-tool="captions">
+              <header class="tool-head tool-head-switch">
+                <span class="tool-ico"><svg class="ico"><use href="#i-captions"/></svg></span>
+                <div><h3>Hormozi 3D Captions</h3><p>Bold word-by-word captions with a 3D pop.</p></div>
+                <button class="switch" type="button" role="switch" aria-checked="false" data-fx="captions" aria-label="Hormozi 3D captions"></button>
+              </header>
+            </section>
+
+            <!-- B-roll & SFX -->
+            <section class="tool" data-tool="broll-sfx">
+              <header class="tool-head">
+                <span class="tool-ico"><svg class="ico"><use href="#i-sparkles"/></svg></span>
+                <div><h3>AI B-Roll &amp; Meme Sound Effects</h3><p>Cut in visuals and sound effects on the key lines.</p></div>
+              </header>
+              <div class="switch-row"><span>AI B-roll</span><button class="switch" type="button" role="switch" aria-checked="false" data-fx="broll" aria-label="AI B-roll"></button></div>
+              <div class="switch-row"><span>Meme sound effects</span><button class="switch" type="button" role="switch" aria-checked="false" data-fx="sfx" aria-label="Meme sound effects"></button></div>
+            </section>
+
+            <!-- Studio sound -->
+            <section class="tool" data-tool="studio">
+              <header class="tool-head tool-head-switch">
+                <span class="tool-ico"><svg class="ico"><use href="#i-wave"/></svg></span>
+                <div><h3>Studio Sound</h3><p>Kill background noise and echo, then even out the volume.</p></div>
+                <button class="switch" type="button" role="switch" aria-checked="false" data-fx="studio" aria-label="Studio sound"></button>
+              </header>
+            </section>
+
+            <!-- Thumbnail -->
+            <section class="tool" data-tool="thumbnail">
+              <header class="tool-head">
+                <span class="tool-ico"><svg class="ico"><use href="#i-image"/></svg></span>
+                <div><h3>Generate Viral Thumbnail</h3><p>Design a scroll-stopping cover from the frame at the playhead.</p></div>
+              </header>
+              <button class="btn btn-tool" type="button" id="thumbBtn">Generate thumbnail</button>
+            </section>
+          </div>
+
+          <!-- Section 4: export -->
+          <div class="export" id="exportPanel">
+            <h3>Export</h3>
+            <div class="thumb-slot" id="thumbSlot" hidden>
+              <img id="thumbImg" alt="Generated thumbnail preview">
+            </div>
+            <label class="field-label" for="quality">Quality</label>
+            <select id="quality" class="select">
+              <option value="720p">720p HD</option>
+              <option value="1080p" selected>1080p Full HD</option>
+              <option value="4k">4K Ultra HD</option>
+            </select>
+            <p class="hint" id="exportEstimate"></p>
+            <button class="btn btn-primary btn-xl" type="button" id="exportBtn">
+              <svg class="ico"><use href="#i-download"/></svg> Download Reel &amp; Thumbnail
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="gen-overlay" id="genOverlay" hidden></div>
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="api.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
